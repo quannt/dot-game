@@ -4,7 +4,7 @@
 // init project
 var express = require('express');
 var app = express();
-sassMiddleware = require("node-sass-middleware");
+var sassMiddleware = require("node-sass-middleware");
 
 app.use(sassMiddleware({
   src: __dirname + '/public',
@@ -21,6 +21,6 @@ app.get("/", function (request, response) {
 });
 
 // listen for requests :)
-listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
