@@ -1,6 +1,14 @@
-# Node Sass Demo
-This app demonstrates using the node-sass-middleware module to serve scss files.
+# Dot Game
 
-It's based on Ken Wheeler's responsive [Sass demo](https://scotch.io/tutorials/getting-started-with-sass).
+The goal of this exercise is to create a dot game. 
 
-It works by writing the compiled files to `/tmp` and then serves it as a static file from there.
+## Ground Rules
+
+- Write JavaScript that works in current Chrome. 
+- You may look up anything you'd like.
+- There is no time limit.
+- Steps 4 and 5 are optional.
+
+## Assets
+
+To use an asset, click on the "assets" directory in the front-end section; then, click the "Copy URL" button to get the asset's URL.
