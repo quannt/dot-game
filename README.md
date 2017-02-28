@@ -2,7 +2,7 @@
 
 The goal of this exercise is to create a game. In the game, dots move from the top to the bottom of a box. A player tries to click on the dots, and receives points when they are successful.
 
-![mockup](https://cdn.gomix.com/84ca8f35-cd1c-4d74-ad6f-f1f108b5b85a%2Fdot-game-mockup.png)
+![mockup](https://cdn.gomix.com/84ca8f35-cd1c-4d74-ad6f-f1f108b5b85a%2Fdot-game-with-banner.png)
 
 
 ## Guidelines for Completing the Exercise
@@ -16,7 +16,7 @@ The goal of this exercise is to create a game. In the game, dots move from the t
 
 ## Building the Game
 
-- The game starts when a player clicks the Start button.
+- The game starts when a player touches or clicks the Start button; at that point, the Start button changes to a Pause button, which should pause the game until the button is touched or clicked again.
 - Dots fall at a constant rate. A player should be able to use a slider to control the rate at which dots fall, with a range of 10-100 pixels per second.
 - A new dot appears at a random horizontal position at the top of the box every second.
 - Dots should vary randomly in size from 10px in diameter to 100px in diameter.
