@@ -16,14 +16,14 @@ The goal of this exercise is to create a game. In the game, dots move from the t
 
 ## Building the Game
 
-We intend for you to spend two to four hours on this exercise; however, there is no time limit. 
-
 - The game starts when a player clicks the Start button.
 - Dots fall at a constant rate. A player should be able to use a slider to control the rate at which dots fall, with a range of 10-100 pixels per second.
 - A new dot appears at a random horizontal position at the top of the box every second.
 - Dots should vary randomly in size from 10px in diameter to 100px in diameter.
 - A dot's value is inversely proportional to its size, with the smallest dots worth 10 points, and the largest dots worth 1 point.
 - When a player touches or clicks a dot, the dot should disappear from the box, and the score should be increased based on the dot's value. 
+
+You can view your running application by clicking the "Show" link in the upper left-hand corner of the page. 
 
 ## Creating and Using Assets
 
