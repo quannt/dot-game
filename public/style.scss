@@ -1,0 +1,30 @@
+/**
+ * Base global styling
+ */
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+.button {
+  
+}
+
+
+
+
+/**
+ * Header styling
+ */
+header {
+  margin: 0 24px;
+}
+
+.header-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
