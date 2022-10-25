@@ -1,3 +1,5 @@
+@import "https://unpkg.com/open-props/src/index.css";
+
 /**
  * Base global styling
  */
@@ -7,11 +9,24 @@ html {
 body {
   min-height: 100%;
   margin: 0;
-  font-family: system-ui, sans-serif;
+  
+  font-family: var(--font-sans);
 }
 
 .button {
-  
+  color: var(--gray-1);
+  background-color: var(--indigo-6);
+  border: 1px solid var(--blue-1);
+  text-shadow: 0 1px 0 var(--blue-2);
+
+  &:hover {
+    background-color: var(--blue-1);
+  }
+  box-shadow: var(--shadow-1);
+}
+
+.button-xl {
+  padding: var(--size-4) var(--size-8);
 }
 
 
@@ -22,10 +37,15 @@ body {
  */
 header {
   margin: 0 24px;
+  
+  .header-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  button {
+    text-transform: uppercase;
+  }
 }
 
-.header-menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
