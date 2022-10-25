@@ -1,10 +1,7 @@
-export default function Game () {
-  const render = () => {
+class Game {
+  render () {
     console.log('render game!')
   }
-  
-  
-  return {
-    render
-  }
-} 
+}
+
+export default Game
