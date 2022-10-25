@@ -19,7 +19,7 @@ body {
   border: var(--border-size-2) solid var(--gray-7);
   cursor:pointer;
   border-radius: var(--radius-round);
-
+w
   &:hover {
     background-color: var(--indigo-9);
   }
@@ -38,7 +38,8 @@ body {
  * Header styling
  */
 header {
-  margin: 0 24px;
+  padding: var(--size-4) var(--size-8);
+  border-bottom: var(--border-size-1) solid var(--gray-7);
   
   h1 {
     font-weight: var(--font-weight-7);
@@ -57,14 +58,16 @@ header {
     
     .input {
       cursor: pointer;
-      background-color: var(--cyan-5);
+      background-color: var(--yellow-4);
       appearance: none;
       border-radius: var(--radius-round);
-      margin-bottom: var(--size-4)
+      margin-bottom: var(--size-4);
+      height: var(--size-2);
     }
     
     .label {
       font-size: var(--font-size-1);
+      font-weight: var(--font-weight-5);
     }
   }
 }
