@@ -14,14 +14,14 @@ body {
 }
 
 .button {
-  color: var(--gray-1);
-  background-color: var(--indigo-6);
+  color: var(--gray-0);
+  background-color: var(--indigo-8);
   border: var(--border-size-2) solid var(--gray-7);
   cursor:pointer;
   border-radius: var(--radius-round);
 
   &:hover {
-    background-color: var(--indigo-7);
+    background-color: var(--indigo-9);
   }
   box-shadow: var(--shadow-3);
   text-transform: uppercase;
@@ -55,6 +55,17 @@ header {
     display: flex;
     flex-direction: column;
     
+    .input {
+      cursor: pointer;
+      background-color: var(--cyan-5);
+      appearance: none;
+      border-radius: var(--radius-round);
+      margin-bottom: var(--size-4)
+    }
+    
+    .label {
+      font-size: var(--font-size-1);
+    }
   }
 }
 
