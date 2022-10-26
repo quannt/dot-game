@@ -22,8 +22,9 @@ class Dot {
   }
   animate () {
     const controller = new AbortController();
+    const speed = 10;
     animationInterval(60, controller.signal, time => {
-      this._yCoordinate = this._yCoordinate + 10
+      this._yCoordinate = this._yCoordinate + (speed / 60)
       this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`
     });
   }
