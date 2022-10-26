@@ -38,6 +38,7 @@ body {
  * Header styling
  */
 header {
+  
   padding: var(--size-4) var(--size-8);
   border-bottom: var(--border-size-1) solid var(--gray-7);
   
@@ -78,7 +79,22 @@ header {
  */
 
 .dot {
-  width: 30px;
-  height: 30px;
   border-radius: var(--radius-round);
+  border: var(--border-size-1) solid var(--gray-7);
+  box-shadow: var(--shadow-5);
+}
+
+.one {
+  width: 100px;
+  height: 100px;
+  background-color: var(--violet-5);
+  transform: translate(300px, 250px)
+}
+
+
+.two {
+  width: 50px;
+  height: 50px;
+  background-color: var(--violet-5);
+  transform: translate(0px, 0px)
 }
