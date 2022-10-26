@@ -47,7 +47,7 @@ class Game {
     
     window.setInterval(() => {
       const xCoordinate = getRandomInt(0, 1000)
-      const yCoordinate = getRandomInt(-100, 0)
+      const yCoordinate = getRandomInt(-200, -10)
       const dot = new Dot(this._el, xCoordinate, yCoordinate, 'button')
     }, 1000)
     
