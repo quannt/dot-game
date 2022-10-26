@@ -13,7 +13,8 @@ class Game {
     this._startButtonEl = document.querySelector('#start-button')
     this._speedLabel = document.querySelector('#speed-label')
     this._speedInput = document.querySelector('#speed-input')
-    this._
+    this._startButton = document.querySelector('#start-button')
+    
   }
   render () {
     this.hydrateExistingElements()
@@ -38,7 +39,7 @@ class Game {
       }
       this._speedLabel.textContent = `Current Speed: ${speed} - Difficulty: ${speedLabel}`
     });
-    this.
+    this._startButtonEl.addEventListener('click', this.handleStartButtonClick)
   }
   renderDots() {
     console.log('renderDots')
@@ -46,6 +47,10 @@ class Game {
   start () {
     this._status = GameStatus.InProgress
     console.log('start')
+  }
+  handleStartButtonClick () {
+    this._status = GameStatus.paused
+    this._startButtonEl.textContent = 'Paused'
   }
 }
 
