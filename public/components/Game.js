@@ -39,7 +39,7 @@ class Game {
       }
       this._speedLabel.textContent = `Current Speed: ${speed} - Difficulty: ${speedLabel}`
     });
-    this._startButtonEl.addEventListener('click', this.handleStartButtonClick)
+    this._startButtonEl.addEventListener('click', this.handleStartButtonClick.bind(this))
   }
   renderDots() {
     console.log('renderDots')
@@ -49,8 +49,13 @@ class Game {
     console.log('start')
   }
   handleStartButtonClick () {
-    this._status = GameStatus.paused
-    this._startButtonEl.textContent = 'Paused'
+    if (this._status === GameStatus.InProgress) {
+      this._status = GameStatus.Paused
+      this._startButtonEl.textContent = 'Resume'
+    } else if (this._status === GameStatus.Paused) {
+      this._status = GameStatus.InProgress
+      this._startButtonEl.textContent = 'Pause'
+    }
   }
 }
 
