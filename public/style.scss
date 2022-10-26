@@ -73,12 +73,18 @@ header {
   }
 }
 
-
+main {
+  position: relative;
+  overflow-y: hidden;
+}
 /**
  * Dots styling
  */
 
 .dot {
+  position: absolute;
+  left: 0;
+  top: 0;
   border-radius: var(--radius-round);
   border: var(--border-size-1) solid var(--gray-7);
   box-shadow: var(--shadow-5);
