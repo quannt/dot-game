@@ -8,6 +8,7 @@ class Game {
   constructor(element) {
     this._el = element
     this._status = GameStatus.Idle
+    this._speed = 0
   }
   render () {
     this.hydrateHeader()
@@ -15,7 +16,9 @@ class Game {
     this.start()
   }
   hydrateHeader () {
-    console.log('hydrateHeader')
+    document.querySelector('#score').textContent = `Score: 0`
+    document.querySelector('#start-button').textContent = 'Start'
+    document.querySelector('#speed-label').textContent = `Current Speed: Slow`
   }
   renderDots() {
     console.log('renderDots')
