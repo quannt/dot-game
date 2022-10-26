@@ -1,4 +1,5 @@
 import Dot from './Dot.js'
+import { getRandomInt } from '../utils/number.js'
 
 const GameStatus = {
   Idle: 'idle',
@@ -43,8 +44,13 @@ class Game {
     this._startButtonEl.addEventListener('click', this.handleStartButtonClick.bind(this))
   }
   renderDots() {
-    console.log('renderDots')
-    const dot = new Dot(this._el, 'button')
+    
+    window.setInterval(() => {
+      const xCoordinate = getRandomInt(0, 1000)
+      const yCoordinate = getRandomInt(0, 1000)
+      const dot = new Dot(this._el, xCoordinate, yCoordinate, 'button')
+    }, 1000)
+    
   }
   start () {
     this._status = GameStatus.InProgress
