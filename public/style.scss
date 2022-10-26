@@ -90,12 +90,12 @@ main {
   border-radius: var(--radius-round);
   border: var(--border-size-1) solid var(--gray-7);
   box-shadow: var(--shadow-5);
+  background-color: var(--violet-5);
 }
 
 .one {
   width: 100px;
   height: 100px;
-  background-color: var(--violet-5);
   transform: translate(300px, 250px)
 }
 
