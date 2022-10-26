@@ -5,16 +5,24 @@ const GameStatus = {
 }
 
 class Game {
-  constructor() {
-    this.status = GameStatus.Idle
+  constructor(element) {
+    this._el = element
+    this._status = GameStatus.Idle
   }
   render () {
     this.hydrateHeader()
     this.renderDots()
     this.start()
   }
+  hydrateHeader () {
+    console.log('hydrateHeader')
+  }
+  renderDots() {
+    console.log('renderDots')
+  }
   start () {
-    this.status = GameStatus.InProgress
+    this._status = GameStatus.InProgress
+    console.log('start')
   }
 }
 
