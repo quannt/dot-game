@@ -14,7 +14,7 @@ class Game {
     this._speedLabel = document.querySelector('#speed-label')
     this._speedInput = document.querySelector('#speed-input')
     this._startButton = document.querySelector('#start-button')
-    
+    this.handleStartButtonClick.bind(this)
   }
   render () {
     this.hydrateExistingElements()
