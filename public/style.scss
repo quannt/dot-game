@@ -74,9 +74,10 @@ header {
 }
 
 main {
-      height: 100vh;
+  height: 100vh;
   position: relative;
   overflow-y: hidden;
+  padding: 0 var(--size-2);
 }
 /**
  * Dots styling
