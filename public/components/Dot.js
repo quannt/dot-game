@@ -1,18 +1,16 @@
 class Dot {
-  constructor(element) {
-    this._el = element
-    this._status = GameStatus.Idle
-    this._speed = 0
-    this._scoreBoardEl = document.querySelector('#score')
-    this._startButtonEl = document.querySelector('#start-button')
-    this._speedLabel = document.querySelector('#speed-label')
-    this._speedInput = document.querySelector('#speed-input')
-    this._startButton = document.querySelector('#start-button')
-    this.handleStartButtonClick.bind(this)
+  constructor(parentElement, type = 'div') {
+    this._parentEl = parentElement
+    this._type = type
+    this.render()
   }
   render () {
-    this.hydrateExistingElements()
-    this.renderDots()
-    this.start()
+    console.log('rendering dot')
+    const size = Math.random()
+    this._el = document.createElement(this._type)
+    this._el.className = 'dot one'
+    this._parentEl.appendChild(this._el)
   }
 }
+
+export default Dot

@@ -1,3 +1,5 @@
+import Dot from './Dot.js'
+
 const GameStatus = {
   Idle: 'idle',
   InProgress: 'inProgress',
@@ -42,6 +44,7 @@ class Game {
   }
   renderDots() {
     console.log('renderDots')
+    const dot = new Dot(this._el, 'button')
   }
   start () {
     this._status = GameStatus.InProgress
