@@ -13,13 +13,14 @@ class Game {
     this._startButtonEl = document.querySelector('#start-button')
     this._speedLabel = document.querySelector('#speed-label')
     this._speedInput = document.querySelector('#speed-input')
+    this._
   }
   render () {
-    this.hydrateHeader()
+    this.hydrateExistingElements()
     this.renderDots()
     this.start()
   }
-  hydrateHeader () {
+  hydrateExistingElements () {
     this._scoreBoardEl.textContent = `Score: 0`
     this._startButtonEl.textContent = 'Start'
     this._speedLabel.textContent = `Current Speed: 0 - Difficulty: Easy`
@@ -37,6 +38,7 @@ class Game {
       }
       this._speedLabel.textContent = `Current Speed: ${speed} - Difficulty: ${speedLabel}`
     });
+    this.
   }
   renderDots() {
     console.log('renderDots')
