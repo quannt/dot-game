@@ -15,11 +15,11 @@ body {
 
 .button {
   color: var(--gray-0);
-  background-color: var(--indigo-8);
+  background-color: var(--indigo-7);
   border: var(--border-size-2) solid var(--gray-7);
   cursor:pointer;
   border-radius: var(--radius-round);
-w
+
   &:hover {
     background-color: var(--indigo-9);
   }
@@ -72,3 +72,13 @@ header {
   }
 }
 
+
+/**
+ * Dots styling
+ */
+
+.dot {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-round);
+}
