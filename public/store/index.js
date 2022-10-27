@@ -1,5 +1,5 @@
 let score = 0;
-let speed = 0;
+let speed = 10;
 
 export const store = {
   getScore() {
