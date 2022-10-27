@@ -1,5 +1,6 @@
 import Dot from './Dot.js'
 import { getRandomInt } from '../utils/number.js'
+import { store } from '../store/index.js'
 
 const GameStatus = {
   Idle: 'idle',
@@ -20,31 +21,24 @@ class Game {
   }
   render () {
     this.hydrateExistingElements()
+    this.renderHeader()
     this.renderDots()
     this.start()
   }
-  hydrateExistingElements () {
-    this._scoreBoardEl.textContent = `Score: 0`
+  renderHeader () {
+    this._scoreBoardEl.textContent = `Score: ${store.getScore()}`
     this._startButtonEl.textContent = 'Start'
-    this._speedLabel.textContent = `Current Speed: 0 - Difficulty: Easy`
+    this._speedLabel.textContent = `Current Speed: ${store.getSpeed()} - Difficulty: ${store.getDifficulty()}`
+  }
+  hydrateExistingElements () {
     this._speedInput.addEventListener('input', (e) => {
       const speed = e.target.value
-      let speedLabel = ''
-      if (speed >= 0 && speed < 20) {
-        speedLabel = 'Easy'
-      } else if (speed >= 20 && speed < 50) {
-        speedLabel = "Medium"
-      } else if (speed >= 50 && speed < 99) {
-        speedLabel = 'Hard'
-      } else {
-        speedLabel = 'Impossible!'
-      }
-      this._speedLabel.textContent = `Current Speed: ${speed} - Difficulty: ${speedLabel}`
+      store.setSpeed(speed)
+      this.renderHeader()
     });
     this._startButtonEl.addEventListener('click', this.handleStartButtonClick.bind(this))
   }
   renderDots() {
-    
     window.setInterval(() => {
       const xCoordinate = getRandomInt(0, 1000)
       const yCoordinate = getRandomInt(-200, -10)
