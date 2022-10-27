@@ -2,8 +2,9 @@ import { getRandomInt } from "../utils/number.js";
 import { animationInterval } from "../utils/animationInterval.js";
 import { store } from "../store/index.js";
 
+const controller = new AbortController();
 class Dot {
-  constructor(parentElement, xCoordinate = 0, yCoordinate = 0, type = "div") {
+  constructor(parentElement, xCoordinate = 0, yCoordinate = 0, type = "div", callback) {
     this._parentEl = parentElement;
     this._type = type;
     this._xCoordinate = xCoordinate;
@@ -11,6 +12,7 @@ class Dot {
 
     const size = getRandomInt(10, 100);
     this._weight = this.getDotWeight(size);
+    this._callback = callback;
     this.render(size);
   }
   render(size) {
@@ -21,11 +23,15 @@ class Dot {
     this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
     this._parentEl.appendChild(this._el);
     
-    this._el.
+    this._el.addEventListener('click', (e) => {
+      store.increaseScore(this._weight)
+      // TODO: remove the element?
+      this._callback()
+      this.destroy()
+    })
     this.animate();
   }
   animate() {
-    const controller = new AbortController();
     const intervalInMs = 60;
     animationInterval(intervalInMs, controller.signal, () => {
       const speed = store.getSpeed() * (1000 / intervalInMs);
@@ -37,6 +43,10 @@ class Dot {
     // size = 1 => weight = 10
     // size = 100 => weight = 1
     return Math.round(10 / (size / 1) * 10)
+  }
+  destroy() {
+    this._el.remove()
+    controller.abort()
   }
 }
 
