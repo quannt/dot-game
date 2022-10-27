@@ -1,9 +1,14 @@
 import { getRandomInt } from "../utils/number.js";
-import { animationInterval } from "../utils/animationInterval.js";
 import { store } from "../store/index.js";
 
 class Dot {
-  constructor(parentElement, xCoordinate = 0, yCoordinate = 0, type = "div", callback) {
+  constructor(
+    parentElement,
+    xCoordinate = 0,
+    yCoordinate = 0,
+    type = "div",
+    callback
+  ) {
     this._parentEl = parentElement;
     this._type = type;
     this._xCoordinate = xCoordinate;
@@ -21,30 +26,31 @@ class Dot {
     this._el.style.width = `${size}px`;
     this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
     this._parentEl.appendChild(this._el);
-    
-    this._el.addEventListener('click', (e) => {
-      store.increaseScore(this._weight)
-      this._callback()
-      this.destroy()
-    })
+
+    this._el.addEventListener("click", (e) => {
+      store.increaseScore(this._weight);
+      this._callback();
+      this.destroy();
+    });
     this.animate();
   }
   animate() {
     const intervalInMs = 60;
-    const speed = store.getSpeed() * (1000 / intervalInMs);
+    const speed = store.getSpeed();
     this._yCoordinate = this._yCoordinate + speed / intervalInMs;
     this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
+    this._intervalId = requestAnimationFrame(this.animate.bind(this));
     
-    this._intervalId = requestAnimationFrame(this.animate.bind(this))
+    // TODO: destroy if the dot goes out of the viewport?
   }
   getDotWeight(size) {
     // size = 1 => weight = 10
     // size = 100 => weight = 1
-    return Math.round(10 / (size / 1) * 10)
+    return Math.round((10 / (size / 1)) * 10);
   }
   destroy() {
-    this._el.remove()
-    cancelAnimationFrame(this._intervalId)
+    this._el.remove();
+    cancelAnimationFrame(this._intervalId);
   }
 }
 
