@@ -10,7 +10,7 @@ class Dot {
     this._yCoordinate = yCoordinate;
 
     const size = getRandomInt(10, 100);
-    this._weight = getDotWeight(size);
+    this._weight = this.getDotWeight(size);
     this.render(size);
   }
   render(size) {
@@ -20,7 +20,8 @@ class Dot {
     this._el.style.width = `${size}px`;
     this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
     this._parentEl.appendChild(this._el);
-
+    
+    this._el.
     this.animate();
   }
   animate() {
@@ -33,7 +34,9 @@ class Dot {
     });
   }
   getDotWeight(size) {
-    return 
+    // size = 1 => weight = 10
+    // size = 100 => weight = 1
+    return Math.round(10 / (size / 1) * 10)
   }
 }
 
