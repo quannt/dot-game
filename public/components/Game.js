@@ -10,6 +10,7 @@ class Game {
     this._startButtonEl = document.querySelector('#start-button')
     this._speedLabel = document.querySelector('#speed-label')
     this._speedInput = document.querySelector('#speed-input')
+    
   }
   render () {
     this.hydrateExistingElements()
@@ -37,12 +38,15 @@ class Game {
     this._startButtonEl.addEventListener('click', this.handleStartButtonClick.bind(this))
   }
   renderDots() {
-    window.setInterval(() => {
+    this._renderDotsIntervalId = window.setInterval(() => {
       const xCoordinate = getRandomInt(0, 1000)
       const yCoordinate = getRandomInt(-200, -10)
       const dot = new Dot(this._el, xCoordinate, yCoordinate, 'button', this.renderHeader.bind(this))
     }, 1000)
     
+  }
+  stopRenderingDots () {
+    window.clearInterval(this._renderDotsIntervalId)
   }
   handleStartButtonClick () {
     if (store.getStatus() === GameStatus.Idle) {
@@ -51,8 +55,10 @@ class Game {
     }
     else if (store.getStatus() === GameStatus.InProgress) {
       store.setStatus(GameStatus.Paused)
+      this.stopRenderingDots();
     } else if (store.getStatus() === GameStatus.Paused) {
       store.setStatus(GameStatus.InProgress)
+      this.renderDots()
     }
     this.renderHeader()
   }
