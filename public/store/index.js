@@ -1,5 +1,12 @@
+export const GameStatus = {
+  Idle: "idle",
+  InProgress: "inProgress",
+  Paused: "paused",
+};
+
 let score = 0;
 let speed = 10;
+let status = GameStatus.Idle;
 
 export const store = {
   getScore() {
@@ -21,6 +28,9 @@ export const store = {
     }
     return difficulty;
   },
+  getStatus() {
+    return status;
+  },
   setScore(newScore) {
     score = newScore;
   },
@@ -29,5 +39,8 @@ export const store = {
   },
   increaseScore(unit) {
     score += unit;
+  },
+  setStatus(newStatus) {
+    status = newStatus;
   },
 };
