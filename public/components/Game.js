@@ -6,18 +6,14 @@ import { store, GameStatus } from '../store/index.js'
 class Game {
   constructor(element) {
     this._el = element
-    this._speed = 0
     this._scoreBoardEl = document.querySelector('#score')
     this._startButtonEl = document.querySelector('#start-button')
     this._speedLabel = document.querySelector('#speed-label')
     this._speedInput = document.querySelector('#speed-input')
-    this._startButton = document.querySelector('#start-button')
   }
   render () {
     this.hydrateExistingElements()
     this.renderHeader()
-    // this.renderDots()
-    // this.start()
   }
   renderHeader () {
     this._scoreBoardEl.textContent = `Score: ${store.getScore()}`
@@ -25,12 +21,12 @@ class Game {
     this._speedLabel.textContent = `Current Speed: ${store.getSpeed()} - Difficulty: ${store.getDifficulty()}`
     
     let buttonText = 'Start'
-    if (this._status === GameStatus.InProgress) {
+    if (store.getStatus() === GameStatus.Paused) {
         buttonText = 'Resume'
-    } else if (this._status === GameStatus.Paused) {
-        
+    } else if (store.getStatus() === GameStatus.InProgress) {
+        buttonText = 'Pause'
     }
-    this._startButtonEl.textContent = 
+    this._startButtonEl.textContent = buttonText
   }
   hydrateExistingElements () {
     this._speedInput.addEventListener('input', (e) => {
@@ -48,17 +44,15 @@ class Game {
     }, 1000)
     
   }
-  start () {
-    this._status = GameStatus.InProgress
-  }
   handleStartButtonClick () {
-    
-    if (this._status === GameStatus.InProgress) {
+    if (store.getStatus() === GameStatus.Idle) {
+      store.setStatus(GameStatus.InProgress)
+      this.renderDots()
+    }
+    else if (store.getStatus() === GameStatus.InProgress) {
       store.setStatus(GameStatus.Paused)
-      // this._startButtonEl.textContent = 'Resume'
-    } else if (this._status === GameStatus.Paused) {
-      store.setStatus( GameStatus.InProgress)
-      // this._startButtonEl.textContent = 'Pause'
+    } else if (store.getStatus() === GameStatus.Paused) {
+      store.setStatus(GameStatus.InProgress)
     }
     this.renderHeader()
   }

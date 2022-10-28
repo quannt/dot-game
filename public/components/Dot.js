@@ -1,5 +1,5 @@
 import { getRandomInt } from "../utils/number.js";
-import { store } from "../store/index.js";
+import { store, GameStatus } from "../store/index.js";
 
 class Dot {
   constructor(
@@ -36,7 +36,7 @@ class Dot {
   }
   animate() {
     const intervalInMs = 60;
-    const speed = store.getSpeed();
+    const speed = store.getStatus() === GameStatus.InProgress ? store.getSpeed() : 0;
     this._yCoordinate = this._yCoordinate + speed / intervalInMs;
     this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
     this._intervalId = requestAnimationFrame(this.animate.bind(this));
