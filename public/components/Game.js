@@ -39,8 +39,8 @@ class Game {
   }
   renderDots() {
     this._renderDotsIntervalId = window.setInterval(() => {
-      const xCoordinate = getRandomInt(0, 1000)
-      const yCoordinate = getRandomInt(-200, -10)
+      const xCoordinate = getRandomInt(0, window.screen.width)
+      const yCoordinate = getRandomInt(-100, -100)
       const dot = new Dot(this._el, xCoordinate, yCoordinate, 'button', this.renderHeader.bind(this))
     }, 1000)
     
