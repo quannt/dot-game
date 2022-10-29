@@ -4,8 +4,6 @@ import { store, GameStatus } from "../store/index.js";
 class Dot {
   constructor(
     parentElement,
-    // xCoordinate = 0,
-    // yCoordinate = 0,
     type = "div",
     callback
   ) {
