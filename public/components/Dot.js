@@ -1,4 +1,5 @@
 import { getRandomInt } from "../utils/number.js";
+import { isElementInViewport } from "../utils/dom.js"
 import { store, GameStatus } from "../store/index.js";
 
 class Dot {
@@ -44,7 +45,9 @@ class Dot {
     this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
     this._intervalId = requestAnimationFrame(this.animate.bind(this));
     
-    // TODO: destroy if the dot goes out of the viewport?
+    if (!isElementInViewport(this._el)) {
+      this.destroy()
+    }
   }
   getDotWeight(size) {
     // size = 1 => weight = 10
