@@ -4,8 +4,8 @@ import { store, GameStatus } from "../store/index.js";
 class Dot {
   constructor(
     parentElement,
-    xCoordinate = 0,
-    yCoordinate = 0,
+    // xCoordinate = 0,
+    // yCoordinate = 0,
     type = "div",
     callback
   ) {
@@ -32,7 +32,7 @@ class Dot {
       this._callback();
       this.destroy();
     });
-    this.animate();
+    // this.animate();
   }
   animate() {
     const intervalInMs = 60;
