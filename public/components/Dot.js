@@ -11,11 +11,16 @@ class Dot {
   ) {
     this._parentEl = parentElement;
     this._type = type;
+      
+        
+    const size = getRandomInt(10, 100);
+    this._weight = this.getDotWeight(size);
+      
+    const xCoordinate = getRandomInt(0, window.screen.width - size);
+    const yCoordinate = 0 - size;
     this._xCoordinate = xCoordinate;
     this._yCoordinate = yCoordinate;
 
-    const size = getRandomInt(10, 100);
-    this._weight = this.getDotWeight(size);
     this._callback = callback;
     this.render(size);
   }
@@ -32,7 +37,7 @@ class Dot {
       this._callback();
       this.destroy();
     });
-    // this.animate();
+    this.animate();
   }
   animate() {
     const intervalInMs = 60;
