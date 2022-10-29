@@ -1,6 +1,7 @@
 import { getRandomInt } from "../utils/number.js";
 import { isElementInViewport } from "../utils/dom.js"
-import { store, GameStatus } from "../store/index.js";
+import { store } from "../store/index.js";
+import { GameStatus } from "../constant/index.js";
 
 class Dot {
   constructor(

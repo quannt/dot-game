@@ -1,6 +1,7 @@
 import Dot from "./Dot.js";
 import { getRandomInt } from "../utils/number.js";
-import { store, GameStatus } from "../store/index.js";
+import { store } from "../store/index.js";
+import { GameStatus, newDotIntervalInMs } from "../constant/index.js";
 
 class Game {
   constructor(element) {
@@ -49,7 +50,7 @@ class Game {
         "button",
         this.renderHeader.bind(this)
       );
-    }, 1000);
+    }, newDotIntervalInMs);
   }
   stopRenderingDots() {
     window.clearInterval(this._renderDotsIntervalId);
@@ -70,6 +71,11 @@ class Game {
     this.render();
   }
   setUpAutoPause() {
+    // Pause the game when the tab is hidden.
+    // UX wise I think this is better.
+    // Also, we use requestAnimationFrame to move the dots,
+    // which pauses when the tab is hidden. This leads to a situation that
+    // a huge cluster of dots are shown once you come back to the tab.
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState !== "visible") {
         store.setStatus(GameStatus.Paused);

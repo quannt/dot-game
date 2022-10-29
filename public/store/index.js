@@ -1,8 +1,4 @@
-export const GameStatus = {
-  Idle: "idle",
-  InProgress: "inProgress",
-  Paused: "paused",
-};
+import { GameStatus } from "../constant/index.js";
 
 let score = 0;
 let speed = 10;
@@ -21,10 +17,8 @@ export const store = {
       difficulty = "Easy";
     } else if (speed >= 20 && speed < 50) {
       difficulty = "Medium";
-    } else if (speed >= 50 && speed < 99) {
-      difficulty = "Hard";
     } else {
-      difficulty = "Impossible!";
+      difficulty = "Hard";
     }
     return difficulty;
   },
