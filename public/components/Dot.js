@@ -1,7 +1,7 @@
 import { getRandomInt } from "../utils/number.js";
 import { isElementInViewport } from "../utils/dom.js"
 import { store } from "../store/index.js";
-import { GameStatus } from "../constant/index.js";
+import { GameStatus, dotMinSizeInPixel, dotMaxSizeInPixel } from "../constant/index.js";
 
 class Dot {
   constructor(
@@ -13,7 +13,7 @@ class Dot {
     this._type = type;
       
         
-    const size = getRandomInt(10, 100);
+    const size = getRandomInt(dotMinSizeInPixel, dotMaxSizeInPixel);
     this._weight = this.getDotWeight(size);
       
     const xCoordinate = getRandomInt(0, window.innerWidth - size);

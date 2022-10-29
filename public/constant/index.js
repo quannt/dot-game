@@ -5,3 +5,7 @@ export const GameStatus = {
 };
 
 export const newDotIntervalInMs = 1000;
+
+export const dotMinSizeInPixel = 10;
+
+export const dotMaxSizeInPixel = 100;
