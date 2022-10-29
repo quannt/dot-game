@@ -39,7 +39,11 @@ body {
  */
 header {
   
-  padding: var(--size-4) var(--size-8);
+  @media () {
+  @media screen and (min-width: 600px) {
+    padding: var(--size-4) var(--size-8);
+  }
+  
   border-bottom: var(--border-size-1) solid var(--gray-7);
   
   h1 {
