@@ -16,7 +16,7 @@ class Dot {
     const size = getRandomInt(10, 100);
     this._weight = this.getDotWeight(size);
       
-    const xCoordinate = getRandomInt(0, window.screen.width - size);
+    const xCoordinate = getRandomInt(0, window.innerWidth - size);
     const yCoordinate = 0 - size;
     this._xCoordinate = xCoordinate;
     this._yCoordinate = yCoordinate;
