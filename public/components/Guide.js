@@ -4,14 +4,24 @@ class Guide {
     this._type = type;
     this._callback = callback;
     this._steps = steps;
+    this._currentStep = 0;
     this.render();
   }
   render() {
     this._el = document.createElement("div");
     this._el.className = "overlay";
     this._parentEl.appendChild(this._el);
-
+    this.renderSteps();
+    this.setUpEventListeners();
+  }
+  renderSteps() {
     for (let i = 0; i < this._steps?.length; i++) {
+      const isStepActive = i + 1 === this._currentStep;
+
+      if (!isStepActive) {
+        continue;
+      }
+
       const step = this._steps[i];
       const el = document.createElement("div");
       const hostEl = step.hostEl;
@@ -42,7 +52,7 @@ class Guide {
       if (!isLastStep) {
         menu.innerHTML += bottomMenu;
       }
-      
+
       el.appendChild(menu);
 
       el.style.top = `${step.top}px`;
@@ -53,18 +63,20 @@ class Guide {
       hostEl.style.zIndex = "2";
       hostEl.append(el);
     }
-
-    this.setUpEventListeners();
   }
   setUpEventListeners() {
     const nextButton = document.querySelector(".guide-next-button");
     const skipButton = document.querySelector(".guide-skip-button");
 
     nextButton.addEventListener("click", this.handleNextButtonClick.bind(this));
-    skipButton?.addEventListener("click", this.handleSkipButtonClick.bind(this));
+    skipButton?.addEventListener(
+      "click",
+      this.handleSkipButtonClick.bind(this)
+    );
   }
   handleNextButtonClick(e) {
     console.log("handleNextButtonClick", Number(e.target.dataset.step));
+    this._currentStep = (Number(e.target.dataset.step) ?? 0) + 1;
   }
   handleSkipButtonClick(e) {
     console.log("handleSkipButtonClick");

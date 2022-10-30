@@ -29,7 +29,7 @@ class Game {
       left: 7,
       position: 'bottom'
     }, {
-      hostEl: document.querySelector(".header-menu-input"),
+      hostEl: document.querySelector("#input-wrapper"),
       content: 'You can set the speed of the dots using this menu.',
       top: 74,
       left: 7,
