@@ -1,8 +1,12 @@
 import Dot from "./Dot.js";
-import Guide from './Guide.js';
+import Guide from "./Guide.js";
 import { getRandomInt } from "../utils/number.js";
 import { store } from "../store/index.js";
-import { GameStatus, newDotIntervalInMs, introLocalStorageKey } from "../constant/index.js";
+import {
+  GameStatus,
+  newDotIntervalInMs,
+  introLocalStorageKey,
+} from "../constant/index.js";
 
 class Game {
   constructor(element) {
@@ -25,20 +29,30 @@ class Game {
     if (localStorage.getItem(introLocalStorageKey)) {
       return;
     }
-    const steps = [{
-      hostEl: document.querySelector(".header-menu .start-button-wrapper"),
-      content: 'Click on the button to start playing.',
-      top: 74,
-      left: 7,
-      position: 'bottom'
-    }, {
-      hostEl: document.querySelector(".header-menu-input .input-wrapper"),
-      content: 'You can set the speed of the dots using this menu.',
-      top: 32,
-      left: 7,
-      position: 'bottom'
-    }, .sample-dot]
-    const guide = new Guide(document.body, 'div', steps)
+    const steps = [
+      {
+        hostEl: document.querySelector(".header-menu .start-button-wrapper"),
+        content: "Click on the button to start playing.",
+        top: 74,
+        left: 7,
+        position: "bottom",
+      },
+      {
+        hostEl: document.querySelector(".header-menu-input .input-wrapper"),
+        content: "You can set the speed of the dots using this menu.",
+        top: 32,
+        left: 7,
+        position: "bottom",
+      },
+      {
+        hostEl: document.querySelector(".sample-dot"),
+        content: "Click on a dot to burst it, you get points for doing so! The smaller the dot, the higher points you get. Now let's play!",
+        top: 0,
+        left: 0,
+        position: "bottom",
+      },
+    ];
+    const guide = new Guide(document.body, "div", steps, this.destroySampleDots.bind(this));
   }
   renderHeader() {
     this._scoreBoardEl.textContent = `Score: ${store.getScore()}`;
@@ -66,15 +80,14 @@ class Game {
   }
   renderDots() {
     this._renderDotsIntervalId = window.setInterval(() => {
-      const dot = new Dot(
-        this._el,
-        "button",
-        this.renderHeader.bind(this)
-      );
+      const dot = new Dot(this._el, "button", this.renderHeader.bind(this));
     }, newDotIntervalInMs);
   }
   stopRenderingDots() {
     window.clearInterval(this._renderDotsIntervalId);
+  }
+  destroySampleDots() {
+    document.querySelectorAll(".sample-dot").forEach((el) => el.remove());
   }
 
   // Event listeners
