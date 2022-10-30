@@ -9,7 +9,7 @@ class Game {
     this._el = element;
     this._scoreBoardEl = document.querySelector("#score");
     this._startButtonEl = document.querySelector("#start-button");
-    this._speedLabel = document.querySelector("#speed-label");
+    this._speedLabelEl = document.querySelector("#speed-label");
     this._speedInput = document.querySelector("#speed-input");
   }
   init() {
@@ -27,7 +27,7 @@ class Game {
   renderHeader() {
     this._scoreBoardEl.textContent = `Score: ${store.getScore()}`;
     this._startButtonEl.textContent = "Start";
-    this._speedLabel.textContent = `Current Speed: ${store.getSpeed()} - Difficulty: ${store.getDifficulty()}`;
+    this._speedLabelEl.textContent = `Current Speed: ${store.getSpeed()} - Difficulty: ${store.getDifficulty()}`;
 
     let buttonText = "Start";
     if (store.getStatus() === GameStatus.Paused) {
