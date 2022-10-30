@@ -33,6 +33,9 @@ class Dot {
     this._parentEl.appendChild(this._el);
 
     this._el.addEventListener("click", (e) => {
+      if (store.getStatus() !== GameStatus.InProgress) {
+        return
+      }
       store.increaseScore(this._weight);
       this._callback();
       this.destroy();
