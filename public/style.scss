@@ -169,11 +169,11 @@ main {
 .guide-tooltip {
   background: var(--tooltip-bg-color);
   z-index: var(--layer-2);
-  padding: var(--size-5);
+  padding: var(--size-3);
   border-radius: var(--radius-3);
   color: var(--tooltip-front-color);
   
-  &.arrow-top {
+  &.bottom {
      &:before {
       content: '';
       position: absolute;

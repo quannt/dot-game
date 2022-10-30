@@ -18,7 +18,10 @@ class Guide {
       el.style.top = `${step.top}px`;
       el.style.left = `${step.left}px`;
       el.style.position = 'absolute';
-      el.className = 'guide-tooltip arrow-top';
+      el.className = `guide-tooltip ${step.position}`;
+      
+      // Create the footer menu
+      
       hostEl.style.zIndex = '2';
       hostEl.append(el)
     }

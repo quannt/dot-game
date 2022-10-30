@@ -24,9 +24,10 @@ class Game {
   renderGuide() {
     const steps = [{
       hostEl: document.querySelector("#start-button-wrapper"),
-      content: 'Click on the Start button',
+      content: 'Click on this button to start playing.',
       top: 74,
-      left: 7
+      left: 7,
+      position: 'bottom'
     }]
     const guide = new Guide(document.body, 'div', steps)
   }
