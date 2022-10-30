@@ -4,7 +4,7 @@ class Guide {
     this._type = type;
     this._callback = callback;
     this._steps = steps;
-    this._currentStep = 0;
+    this._currentStep = 1;
     this.render();
   }
   render() {
@@ -16,15 +16,19 @@ class Guide {
   }
   renderSteps() {
     for (let i = 0; i < this._steps?.length; i++) {
-      const isStepActive = i + 1 === this._currentStep;
-
-      if (!isStepActive) {
-        continue;
-      }
-
+      
+      
+      
       const step = this._steps[i];
       const el = document.createElement("div");
       const hostEl = step.hostEl;
+      
+      const isStepActive = i + 1 === this._currentStep;
+      
+      if (!isStepActive) {
+        hostEl.style.zIndex = "auto";
+        continue;
+      }
 
       // Create the body of the step
       const body = document.createElement("p");
@@ -60,8 +64,15 @@ class Guide {
       el.style.position = "absolute";
       el.className = `guide-tooltip ${step.position}`;
 
-      hostEl.style.zIndex = "2";
-      hostEl.append(el);
+      
+      console.log('Rendering step', i + 1);
+      console.log('isStepActive', isStepActive);
+
+      if (isStepActive) {
+        el.style.display = "block";
+        hostEl.style.zIndex = "2";
+      
+      hostEl.appendChild(el);
     }
   }
   setUpEventListeners() {
@@ -76,7 +87,9 @@ class Guide {
   }
   handleNextButtonClick(e) {
     console.log("handleNextButtonClick", Number(e.target.dataset.step));
-    this._currentStep = (Number(e.target.dataset.step) ?? 0) + 1;
+    this._currentStep = this._currentStep + 1;
+    console.log(this._currentStep);
+    this.renderSteps();
   }
   handleSkipButtonClick(e) {
     console.log("handleSkipButtonClick");
