@@ -12,9 +12,13 @@ class Guide {
     this._parentEl.appendChild(this._el);
     
     for (let step of this._steps) {
+      console.log(step);
       const el = document.createElement('div');
+      const hostEl = step.hostEl;
       el.textContent = step.content;
-      this._el.style
+      el.style.top = step.top;
+      el.style.left = step.left;
+      hostEl.insertAdjacentElement('afterend', el)
     }
   }
 }

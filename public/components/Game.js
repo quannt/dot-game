@@ -22,7 +22,13 @@ class Game {
     this.renderHeader();
   }
   renderGuide() {
-    const guide = new Guide(document.body, 'div')
+    const steps = [{
+      hostEl: document.querySelector("#start-button"),
+      content: 'Click on the Start button',
+      top: 0,
+      left: 0
+    }]
+    const guide = new Guide(document.body, 'div', steps)
   }
   renderHeader() {
     this._scoreBoardEl.textContent = `Score: ${store.getScore()}`;
