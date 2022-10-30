@@ -1,5 +1,17 @@
 @import "https://cdn.jsdelivr.net/npm/open-props@1.4.17/open-props.min.css";
 
+
+:root {
+  --bg-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: red;
+  }
+}
+
+
 /**
  * Base global styling
  */
@@ -42,6 +54,7 @@ body {
 header {
   border-bottom: var(--border-size-1) solid var(--gray-7);
   padding: var(--size-4) var(--size-2);
+  background-color: var(--gray-0);
   
   h1 {
     font-weight: var(--font-weight-6);
@@ -91,6 +104,7 @@ main {
   position: relative;
   overflow-y: hidden;
   padding: 0 var(--size-2);
+  background-color: var(--bg-color);
 }
 /**
  * Dots styling
