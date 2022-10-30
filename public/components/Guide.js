@@ -25,6 +25,9 @@ class Guide {
       menu.className = 'footer-menu';
       menu.innerHTML = `
         <span>${i + 1} of ${this._steps?.length}</span>
+        <div>
+          <button class="button-link">Next »</button>
+        </div>
       `;
       el.appendChild(menu);
       

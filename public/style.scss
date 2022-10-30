@@ -53,6 +53,10 @@ body {
   padding: var(--size-4) var(--size-8);
 }
 
+.button-link {
+  background: transparent;
+}
+
 p {
   padding: 0;
   margin: 0;
@@ -179,7 +183,10 @@ main {
   color: var(--tooltip-front-color);
   
   .footer-menu {
-     
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding-top: var(--size-3);
   }
   
   &.bottom {
