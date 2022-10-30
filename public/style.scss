@@ -6,6 +6,8 @@
   --bg-color: white;
   --font-color: var(--gray-9);
   --overlay-bg-color: var(--gray-7);
+  --tooltip-bg-color: white;
+  --tooltip-front-color: var(--gray-9);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +15,8 @@
     --header-bg-color: var(--gray-8);
     --bg-color: var(--gray-8);
     --font-color: var(--gray-0);
+    --tooltip-bg-color: var(--gray-5);
+    --tooltip-front-color: var(--gray-9);
   }
 }
 
@@ -163,9 +167,28 @@ main {
  * Guide styling
  */ 
 .guide-tooltip {
-  background: var(--bg-color);
+  background: var(--tooltip-bg-color);
   z-index: var(--layer-2);
   padding: var(--size-5);
   border-radius: var(--radius-3);
-  color: var(--font-color);
+  color: var(--tooltip-front-color);
+  
+  &.arrow-top {
+     &:before {
+      content: '';
+      position: absolute;
+      height: 0;
+      width: 0;
+      border: 6px solid transparent;
+       
+      content: '';
+      position: absolute;
+      height: 0;
+      width: 0;
+      border: 9px solid transparent;
+      left: 50%;
+      bottom: 100%;
+      border-bottom-color: var(--tooltip-bg-color);
+    }
+  }
 }
