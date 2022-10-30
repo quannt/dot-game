@@ -28,6 +28,12 @@ class Game {
       top: 74,
       left: 7,
       position: 'bottom'
+    }, {
+      hostEl: document.querySelector(".header-menu-input"),
+      content: 'You can set the speed of the dots using this menu.',
+      top: 74,
+      left: 7,
+      position: 'bottom'
     }]
     const guide = new Guide(document.body, 'div', steps)
   }
