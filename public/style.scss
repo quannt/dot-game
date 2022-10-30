@@ -163,8 +163,9 @@ main {
  * Guide styling
  */ 
 .guide-tooltip {
-  background: white;
-  z-index: 2;
-  padding: 10px;
-  border-radius: 8px;
+  background: var(--bg-color);
+  z-index: var(--layer-2);
+  padding: var(--size-5);
+  border-radius: var(--radius-3);
+  color: var(--font-color);
 }
