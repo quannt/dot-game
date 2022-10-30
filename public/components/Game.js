@@ -32,12 +32,15 @@ class Game {
     }
     const steps = [
       {
-        hostEl: document.querySelector(".header-menu .start-button-wrapper"),
-        content: "Click on the button to start playing.",
-        top: 74,
-        left: 7,
+        hostEl: document.querySelector(".sample-dot"),
+        content:
+          "Click on a dot to burst it, you get points for doing so! The smaller the dot, the more points you get.",
+        top: 91,
+        left: -90,
         position: "bottom",
+        class: "sample-button-tooltip",
       },
+
       {
         hostEl: document.querySelector(".header-menu-input .input-wrapper"),
         content: "You can set the speed of the dots using this menu.",
@@ -46,15 +49,19 @@ class Game {
         position: "bottom",
       },
       {
-        hostEl: document.querySelector(".sample-dot"),
-        content: "Click on a dot to burst it, you get points for doing so! The smaller the dot, the higher points you get. Now let's play!",
-        top: 91,
-        left: -90,
+        hostEl: document.querySelector(".header-menu .start-button-wrapper"),
+        content: "Click on the button to start playing.",
+        top: 74,
+        left: 7,
         position: "bottom",
-        class: "sample-button-tooltip"
       },
     ];
-    const guide = new Guide(document.body, "div", steps, this.destroySampleDots.bind(this));
+    const guide = new Guide(
+      document.body,
+      "div",
+      steps,
+      this.destroySampleDots.bind(this)
+    );
   }
   renderHeader() {
     this._scoreBoardEl.textContent = `Score: ${store.getScore()}`;
