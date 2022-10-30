@@ -18,6 +18,7 @@ class Guide {
       el.style.top = step.top;
       el.style.left = step.left;
       el.style.position = 'absolute';
+      el.className = 'guide-tooltip';
       hostEl.append(el)
     }
   }

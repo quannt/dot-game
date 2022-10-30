@@ -25,7 +25,7 @@ class Game {
     const steps = [{
       hostEl: document.querySelector("#start-button-wrapper"),
       content: 'Click on the Start button',
-      top: 71,
+      top: 74,
       left: 7
     }]
     const guide = new Guide(document.body, 'div', steps)

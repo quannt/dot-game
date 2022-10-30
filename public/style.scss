@@ -157,3 +157,14 @@ main {
   background-color: var(--violet-5);
   transform: translate(0px, 0px)
 }
+
+
+/**
+ * Guide styling
+ */ 
+.guide-tooltip {
+  background: white;
+  z-index: 2;
+  padding: 10px;
+  border-radius: 8px;
+}
