@@ -23,13 +23,13 @@ class Game {
   }
   renderGuide() {
     const steps = [{
-      hostEl: document.querySelector("#start-button-wrapper"),
+      hostEl: document.querySelector(".header-menu .start-button-wrapper"),
       content: 'Click on the button to start playing.',
       top: 74,
       left: 7,
       position: 'bottom'
     }, {
-      hostEl: document.querySelector("#input-wrapper"),
+      hostEl: document.querySelector(".header-menu-input .input-wrapper"),
       content: 'You can set the speed of the dots using this menu.',
       top: 74,
       left: 7,

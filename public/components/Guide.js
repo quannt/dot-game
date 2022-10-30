@@ -15,16 +15,15 @@ class Guide {
     this.setUpEventListeners();
   }
   renderSteps() {
+    this.destroySteps();
+
     for (let i = 0; i < this._steps?.length; i++) {
-      
-      
-      
       const step = this._steps[i];
-      const el = document.createElement("div");
+      this._stepEl = document.createElement("div");
       const hostEl = step.hostEl;
-      
+
       const isStepActive = i + 1 === this._currentStep;
-      
+
       if (!isStepActive) {
         hostEl.style.zIndex = "auto";
         continue;
@@ -33,7 +32,7 @@ class Guide {
       // Create the body of the step
       const body = document.createElement("p");
       body.textContent = step.content;
-      el.appendChild(body);
+      this._stepEl.appendChild(body);
 
       // Create the footer menu of the step
       const menu = document.createElement("div");
@@ -57,23 +56,20 @@ class Guide {
         menu.innerHTML += bottomMenu;
       }
 
-      el.appendChild(menu);
+      this._stepEl.appendChild(menu);
 
-      el.style.top = `${step.top}px`;
-      el.style.left = `${step.left}px`;
-      el.style.position = "absolute";
-      el.className = `guide-tooltip ${step.position}`;
+      this._stepEl.style.top = `${step.top}px`;
+      this._stepEl.style.left = `${step.left}px`;
+      this._stepEl.style.position = "absolute";
+      this._stepEl.className = `guide-tooltip ${step.position}`;
 
-      
-      console.log('Rendering step', i + 1);
-      console.log('isStepActive', isStepActive);
+      hostEl.style.zIndex = "2";
 
-      if (isStepActive) {
-        el.style.display = "block";
-        hostEl.style.zIndex = "2";
-      
-      hostEl.appendChild(el);
+      hostEl.appendChild(this._stepEl);
     }
+  }
+  destroySteps() {
+    document.querySelectorAll(".guide-tooltip").forEach((el) => el.remove());
   }
   setUpEventListeners() {
     const nextButton = document.querySelector(".guide-next-button");
@@ -86,13 +82,19 @@ class Guide {
     );
   }
   handleNextButtonClick(e) {
-    console.log("handleNextButtonClick", Number(e.target.dataset.step));
     this._currentStep = this._currentStep + 1;
-    console.log(this._currentStep);
+    if (this._currentStep + 1 > this._steps.length) {
+      this.destroy();
+      return;
+    }
     this.renderSteps();
   }
   handleSkipButtonClick(e) {
-    console.log("handleSkipButtonClick");
+    this.destroy();
+  }
+  destroy() {
+    this.destroySteps();
+    this._el.remove();
   }
 }
 
