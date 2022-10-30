@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="mobile-web-app-capable" content="yes">
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
     <title>Dot Game</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
+    />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
@@ -16,18 +19,36 @@
         <div class="start-button-wrapper">
           <button id="start-button" class="button button-xl">Start</button>
         </div>
-        
       </div>
 
       <div class="header-menu-input">
         <div class="input-wrapper">
-          <input class="input" id="speed-input" type="range" min="10" max="100" value="10" />
+          <input
+            class="input"
+            id="speed-input"
+            type="range"
+            min="10"
+            max="100"
+            value="10"
+          />
         </div>
-        
-        <label class="label" for="speed-input" id="speed-label">Current Speed: Medium</label>
+
+        <label class="label" for="speed-input" id="speed-label"
+          >Current Speed: Medium</label
+        >
       </div>
     </header>
     <main id="root">
+      <div class="sample-dot">
+        <button
+          class="dot button"
+          style="
+            height: 71px;
+            width: 71px;
+            transform: translate(220px, 106.1px);
+          "
+        ></button>
+      </div>
     </main>
     <script type="module" src="index.js"></script>
   </body>

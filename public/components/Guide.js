@@ -1,3 +1,5 @@
+import { introLocalStorageKey } from "../constant/index.js";
+
 class Guide {
   constructor(parentElement, type = "div", steps, callback) {
     this._parentEl = parentElement;
@@ -12,7 +14,6 @@ class Guide {
     this._el.className = "overlay";
     this._parentEl.appendChild(this._el);
     this.renderSteps();
-    this.setUpEventListeners();
   }
   renderSteps() {
     this.destroySteps();
@@ -67,6 +68,7 @@ class Guide {
 
       hostEl.appendChild(this._stepEl);
     }
+    this.setUpEventListeners();
   }
   destroySteps() {
     document.querySelectorAll(".guide-tooltip").forEach((el) => el.remove());
@@ -83,7 +85,7 @@ class Guide {
   }
   handleNextButtonClick(e) {
     this._currentStep = this._currentStep + 1;
-    if (this._currentStep + 1 > this._steps.length) {
+    if (this._currentStep > this._steps.length) {
       this.destroy();
       return;
     }
@@ -93,6 +95,7 @@ class Guide {
     this.destroy();
   }
   destroy() {
+    localStorage.setItem(introLocalStorageKey, 'true');
     this.destroySteps();
     this._el.remove();
   }

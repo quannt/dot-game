@@ -2,7 +2,7 @@ import Dot from "./Dot.js";
 import Guide from './Guide.js';
 import { getRandomInt } from "../utils/number.js";
 import { store } from "../store/index.js";
-import { GameStatus, newDotIntervalInMs } from "../constant/index.js";
+import { GameStatus, newDotIntervalInMs, introLocalStorageKey } from "../constant/index.js";
 
 class Game {
   constructor(element) {
@@ -22,6 +22,9 @@ class Game {
     this.renderHeader();
   }
   renderGuide() {
+    if (localStorage.getItem(introLocalStorageKey)) {
+      return;
+    }
     const steps = [{
       hostEl: document.querySelector(".header-menu .start-button-wrapper"),
       content: 'Click on the button to start playing.',
@@ -31,10 +34,10 @@ class Game {
     }, {
       hostEl: document.querySelector(".header-menu-input .input-wrapper"),
       content: 'You can set the speed of the dots using this menu.',
-      top: 74,
+      top: 32,
       left: 7,
       position: 'bottom'
-    }]
+    }, .sample-dot]
     const guide = new Guide(document.body, 'div', steps)
   }
   renderHeader() {
