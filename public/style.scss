@@ -182,12 +182,27 @@ main {
   padding: var(--size-3);
   border-radius: var(--radius-3);
   color: var(--tooltip-front-color);
+  font-size: 0.8rem;
   
   .footer-menu {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
      padding-top: var(--size-3);
+    
+    .top-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: var(--size-2);
+    }
+    
+    .bottom-menu {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      
+      .button-link {
+        flex-grow: 1;
+      }
+    }
   }
   
   &.bottom {
