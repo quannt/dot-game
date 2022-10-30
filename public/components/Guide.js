@@ -15,10 +15,11 @@ class Guide {
       const el = document.createElement('div');
       const hostEl = step.hostEl;
       el.textContent = step.content;
-      el.style.top = step.top;
-      el.style.left = step.left;
+      el.style.top = `${step.top}px`;
+      el.style.left = `${step.left}px`;
       el.style.position = 'absolute';
       el.className = 'guide-tooltip';
+      hostEl.style.zIndex = '2';
       hostEl.append(el)
     }
   }
