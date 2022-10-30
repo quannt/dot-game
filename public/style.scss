@@ -53,6 +53,11 @@ body {
   padding: var(--size-4) var(--size-8);
 }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
 
 
 
@@ -172,6 +177,10 @@ main {
   padding: var(--size-3);
   border-radius: var(--radius-3);
   color: var(--tooltip-front-color);
+  
+  .footer-menu {
+     
+  }
   
   &.bottom {
      &:before {

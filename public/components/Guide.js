@@ -11,10 +11,23 @@ class Guide {
     this._el.className = "overlay";
     this._parentEl.appendChild(this._el);
     
-    for (let step of this._steps) {
+    for (let i = 0; i < this._steps?.length; i++) {
+
+      const step = this._steps[i];
       const el = document.createElement('div');
       const hostEl = step.hostEl;
-      el.textContent = step.content;
+        
+      const body = document.createElement('p');
+      body.textContent = step.content
+      el.appendChild(body);
+      
+      const menu = document.createElement('div');
+      menu.className = 'footer-menu';
+      menu.innerHTML = `
+        <span>${i + 1} of ${this._steps?.length}</span>
+      `;
+      el.appendChild(menu);
+      
       el.style.top = `${step.top}px`;
       el.style.left = `${step.left}px`;
       el.style.position = 'absolute';
