@@ -17,7 +17,11 @@ class Game {
     this.setUpAutoPause();
   }
   render() {
+    this.renderGuide();
     this.renderHeader();
+  }
+  renderGuide() {
+    this._guide
   }
   renderHeader() {
     this._scoreBoardEl.textContent = `Score: ${store.getScore()}`;
