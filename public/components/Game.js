@@ -1,4 +1,5 @@
 import Dot from "./Dot.js";
+import Guide from './Guide.js';
 import { getRandomInt } from "../utils/number.js";
 import { store } from "../store/index.js";
 import { GameStatus, newDotIntervalInMs } from "../constant/index.js";
@@ -21,9 +22,7 @@ class Game {
     this.renderHeader();
   }
   renderGuide() {
-    this._guideEl = document.createElement('div');
-    this._guideEl.className = "overlay";
-    document.body.appendChild(this._guideEl);
+    const guide = new Guide(document.body, 'div')
   }
   renderHeader() {
     this._scoreBoardEl.textContent = `Score: ${store.getScore()}`;

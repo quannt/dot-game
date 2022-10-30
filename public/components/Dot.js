@@ -4,18 +4,13 @@ import { store } from "../store/index.js";
 import { GameStatus, dotMinSizeInPixel, dotMaxSizeInPixel } from "../constant/index.js";
 
 class Dot {
-  constructor(
-    parentElement,
-    type = "div",
-    callback
-  ) {
+  constructor(parentElement, type = "div", callback) {
     this._parentEl = parentElement;
     this._type = type;
-      
-        
+
     const size = getRandomInt(dotMinSizeInPixel, dotMaxSizeInPixel);
     this._weight = this.getDotWeight(size);
-      
+
     const xCoordinate = getRandomInt(0, window.innerWidth - size);
     const yCoordinate = 0 - size;
     this._xCoordinate = xCoordinate;
