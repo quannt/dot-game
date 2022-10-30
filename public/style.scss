@@ -5,6 +5,7 @@
   --header-bg-color: white;
   --bg-color: white;
   --font-color: var(--gray-9);
+  --overlay-bg-color: var(--gray-7);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,8 +55,6 @@ body {
 /**
  * Header styling
  */
-
-
 header {
   border-bottom: var(--border-size-1) solid var(--gray-7);
   padding: var(--size-4) var(--size-2);
@@ -104,6 +103,10 @@ header {
   }
 }
 
+/**
+ * Body styling
+ *
+ */
 main {
   height: 100vh;
   position: relative;
@@ -111,10 +114,22 @@ main {
   padding: 0 var(--size-2);
   background-color: var(--bg-color);
 }
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-bg-color);
+  opacity: 30%;
+  
+}
+
+
 /**
  * Dots styling
  */
-
 .dot {
   position: absolute;
   left: 0;

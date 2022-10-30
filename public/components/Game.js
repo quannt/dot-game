@@ -21,7 +21,9 @@ class Game {
     this.renderHeader();
   }
   renderGuide() {
-    this._guide
+    this._guideEl = document.createElement('div');
+    this._guideEl.className = "overlay";
+    document.body.appendChild(this._guideEl);
   }
   renderHeader() {
     this._scoreBoardEl.textContent = `Score: ${store.getScore()}`;
