@@ -62,7 +62,7 @@ class Guide {
       this._stepEl.style.top = `${step.top}px`;
       this._stepEl.style.left = `${step.left}px`;
       this._stepEl.style.position = "absolute";
-      this._stepEl.className = `guide-tooltip ${step.position}`;
+      this._stepEl.className = `guide-tooltip ${step.position} ${step.class}`;
 
       hostEl.style.zIndex = "2";
 

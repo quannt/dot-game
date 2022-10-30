@@ -27,6 +27,7 @@ class Game {
   }
   renderGuide() {
     if (localStorage.getItem(introLocalStorageKey)) {
+      this.destroySampleDots();
       return;
     }
     const steps = [
@@ -47,9 +48,10 @@ class Game {
       {
         hostEl: document.querySelector(".sample-dot"),
         content: "Click on a dot to burst it, you get points for doing so! The smaller the dot, the higher points you get. Now let's play!",
-        top: 118,
-        left: 0,
+        top: 91,
+        left: -90,
         position: "bottom",
+        class: "sample-button-tooltip"
       },
     ];
     const guide = new Guide(document.body, "div", steps, this.destroySampleDots.bind(this));

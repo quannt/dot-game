@@ -233,3 +233,9 @@ main {
     }
   }
 }
+
+.sample-button-tooltip {
+  width: max-content;
+  max-width: var(--size-13);
+  text-transform: none;
+}
