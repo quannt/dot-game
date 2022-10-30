@@ -38,26 +38,21 @@ body {
  * Header styling
  */
 
-@media screen and (min-width: 768px) {
-  header {
-    padding: var(--size-4) var(--size-8);
-  }
-}
-
 
 header {
   border-bottom: var(--border-size-1) solid var(--gray-7);
   padding: var(--size-4) var(--size-2);
   
   h1 {
-    font-weight: var(--font-weight-7);
-    font-size: var(--font-size-7);
+    font-weight: var(--font-weight-6);
+    font-size: var(--font-size-4);
   }
   
   .header-menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: var(--size-2);
   }
   
   .header-menu-input {
@@ -80,6 +75,17 @@ header {
   }
 }
 
+@media screen and (min-width: 768px) {
+  header {
+    padding: var(--size-4) var(--size-8);
+    
+    h1 {
+      font-weight: var(--font-weight-7);
+      font-size: var(--font-size-7);
+    }
+  }
+}
+
 main {
   height: 100vh;
   position: relative;
@@ -98,6 +104,7 @@ main {
   border: var(--border-size-1) solid var(--gray-7);
   box-shadow: var(--shadow-5);
   background-color: var(--violet-5);
+  padding: 0;
 }
 
 .one {
