@@ -47,7 +47,7 @@ class Game {
       {
         hostEl: document.querySelector(".sample-dot"),
         content: "Click on a dot to burst it, you get points for doing so! The smaller the dot, the higher points you get. Now let's play!",
-        top: 0,
+        top: 118,
         left: 0,
         position: "bottom",
       },
