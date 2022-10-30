@@ -4,12 +4,14 @@
 :root {
   --header-bg-color: white;
   --bg-color: white;
+  --font-color: var(--gray-9);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --header-bg-color: var(--gray-8);
     --bg-color: var(--gray-8);
+    --font-color: var(--gray-0);
   }
 }
 
@@ -25,6 +27,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   font-family: var(--font-sans);
+  color: var(--font-color);
 }
 
 .button {
