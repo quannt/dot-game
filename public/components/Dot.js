@@ -40,7 +40,7 @@ class Dot {
       }
       store.increaseScore(this._weight);
       this._callback();
-      // this.renderPoint();
+      this.renderPoint();
       playSound(Sound.Plop);
       this.destroy();
     });
@@ -49,15 +49,15 @@ class Dot {
   renderPoint() {
     this._pointEl = document.createElement("div");
     this._pointEl.className = "dot-point";
-    this._pointEl.style.left = this._xCoordinate;
-    this._pointEl.style.top = this._yCoordinate;
-    this._pointEl.style.animation = 'var(--animation-slide-out-up)';
+    this._pointEl.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
     this._pointEl.textContent = `+ ${this._weight}`;
     this._parentEl.appendChild(this._pointEl);
-    
+
     setTimeout(() => {
-      this._pointEl.remove();
-    }, 1000)
+      requestAnimationFrame(() => {
+        this._pointEl.remove();
+      });
+    }, 1000);
   }
   animate() {
     const intervalInMs = 60;
@@ -66,10 +66,6 @@ class Dot {
     this._yCoordinate = this._yCoordinate + speed / intervalInMs;
     this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
     this._intervalId = requestAnimationFrame(this.animate.bind(this));
-
-    // if (!isElementInViewport(this._el)) {
-    //   this.destroy();
-    // }
   }
   getDotWeight(size) {
     // size = 1 => weight = 10

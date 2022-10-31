@@ -183,8 +183,10 @@ main {
 
 .dot-point {
  position: absolute;
-  /*left: 0;
-  top: 0; */
+  left: 0;
+  top: 0;
+  font-size: var(--font-size-4);
+/*   animation: var(--animation-slide-out-up); */
 }
 
 

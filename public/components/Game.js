@@ -3,8 +3,12 @@ import Guide from "./Guide.js";
 import { getRandomInt } from "../utils/number.js";
 import { playSound } from "../utils/sound.js";
 import { store } from "../store/index.js";
-import { GameStatus, newDotIntervalInMs, Sound } from "../constant/index.js";
+import { GameStatus, newDotIntervalInMs, Sound, guideSteps } from "../constant/index.js";
 
+const observerOptions = {
+  root: null,
+  rootMargin: "0px",
+};
 class Game {
   constructor(element) {
     this._el = element;
@@ -19,42 +23,17 @@ class Game {
     this.render();
     this.renderGuide();
     this.setUpAutoPause();
+    this.setUpDotsObserver();
     this._bgSound = playSound(Sound.Background);
   }
   render() {
     this.renderHeader();
   }
   renderGuide() {
-    const steps = [
-      {
-        hostEl: document.querySelector(".sample-dot"),
-        content:
-          "Click on a dot to burst it, you get points for doing so! The smaller the dot, the more points you get.",
-        top: 91,
-        left: -90,
-        position: "bottom",
-        class: "sample-button-tooltip",
-      },
-
-      {
-        hostEl: document.querySelector(".header-menu-input .input-wrapper"),
-        content: "You can set the speed of the dots using this menu.",
-        top: 32,
-        left: 7,
-        position: "bottom",
-      },
-      {
-        hostEl: document.querySelector(".header-menu .start-button-wrapper"),
-        content: "Click on the button to start playing.",
-        top: 74,
-        left: 7,
-        position: "bottom",
-      },
-    ];
     this._guide = new Guide(
       document.body,
       "div",
-      steps,
+      guideSteps,
       this.destroySampleDots.bind(this)
     );
   }
@@ -83,25 +62,9 @@ class Game {
     );
   }
   renderDots() {
-    var options = {
-      root: null,
-      rootMargin: "0px",
-    };
-
-    var observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      for (let entry of entries) {
-        if (!entry.isIntersecting) {
-          const dot = this._dots.get(entry.target.dataset.id);
-          dot?.destroy();
-          this._dots.delete(entry.target.dataset.id);
-        }
-      }
-    }, options);
     this._renderDotsIntervalId = window.setInterval(() => {
       const dot = new Dot(this._el, "button", this.renderHeader.bind(this));
-      observer.observe(dot._el);
-      console.log(dot.id);
+      this._observer?.observe(dot._el);
       this._dots.set(dot.id.toString(), dot);
     }, newDotIntervalInMs);
   }
@@ -144,6 +107,18 @@ class Game {
         this.render();
       }
     });
+  }
+  setUpDotsObserver() {
+    this._observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      for (let entry of entries) {
+        if (!entry.isIntersecting) {
+          const dot = this._dots.get(entry.target.dataset.id);
+          dot?.destroy();
+          this._dots.delete(entry.target.dataset.id);
+        }
+      }
+    }, observerOptions);
   }
 }
 
