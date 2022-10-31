@@ -1,7 +1,12 @@
 import { getRandomInt } from "../utils/number.js";
-import { isElementInViewport } from "../utils/dom.js"
+import { isElementInViewport } from "../utils/dom.js";
 import { store } from "../store/index.js";
-import { GameStatus, dotMinSizeInPixel, dotMaxSizeInPixel, Sound } from "../constant/index.js";
+import {
+  GameStatus,
+  dotMinSizeInPixel,
+  dotMaxSizeInPixel,
+  Sound,
+} from "../constant/index.js";
 import { playSound } from "../utils/sound.js";
 
 class Dot {
@@ -30,24 +35,33 @@ class Dot {
 
     this._el.addEventListener("click", (e) => {
       if (store.getStatus() !== GameStatus.InProgress) {
-        return
+        return;
       }
       store.increaseScore(this._weight);
       this._callback();
-      playSound(Sound.Plop)
+      this.renderPoint();
+      playSound(Sound.Plop);
       this.destroy();
     });
     this.animate();
   }
+  renderPoint() {
+    const pointEl = document.createElement("div");
+    pointEl.className = "dot-point";
+    pointEl.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
+    pointEl.textContent = `+ ${this._weight}`;
+    this._parentEl.appendChild(pointEl);
+  }
   animate() {
     const intervalInMs = 60;
-    const speed = store.getStatus() === GameStatus.InProgress ? store.getSpeed() : 0;
+    const speed =
+      store.getStatus() === GameStatus.InProgress ? store.getSpeed() : 0;
     this._yCoordinate = this._yCoordinate + speed / intervalInMs;
     this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
     this._intervalId = requestAnimationFrame(this.animate.bind(this));
-    
+
     if (!isElementInViewport(this._el)) {
-      this.destroy()
+      this.destroy();
     }
   }
   getDotWeight(size) {

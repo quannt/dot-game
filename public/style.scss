@@ -182,6 +182,9 @@ main {
 }
 
 .dot-point {
+  position: absolute;
+  left: 0;
+  top: 0;
   animation: var(--animation-slide-out-up) forwards;
 }
 
