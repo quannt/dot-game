@@ -102,6 +102,8 @@ class Game {
   // Event listeners
   handleStartButtonClick() {
     if (store.getStatus() === GameStatus.Idle) {
+      const sound = new URL("../assets/click.mp3", import.meta.url);
+      new Audio(sound.href).play();
       store.setStatus(GameStatus.InProgress);
       this.renderDots();
     } else if (store.getStatus() === GameStatus.InProgress) {
