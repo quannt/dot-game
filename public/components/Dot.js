@@ -46,11 +46,17 @@ class Dot {
     this.animate();
   }
   renderPoint() {
-    const pointEl = document.createElement("div");
-    pointEl.className = "dot-point";
-    pointEl.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
-    pointEl.textContent = `+ ${this._weight}`;
-    this._parentEl.appendChild(pointEl);
+    this._pointEl = document.createElement("div");
+    this._pointEl.className = "dot-point";
+    this._pointEl.style.left = this._xCoordinate;
+    this._pointEl.style.top = this._yCoordinate;
+    this._pointEl.style.animation = 'var(--animation-slide-out-up)';
+    this._pointEl.textContent = `+ ${this._weight}`;
+    this._parentEl.appendChild(this._pointEl);
+    
+    setTimeout(() => {
+      this._pointEl.remove();
+    }, 1000)
   }
   animate() {
     const intervalInMs = 60;
