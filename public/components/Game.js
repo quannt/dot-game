@@ -87,10 +87,19 @@ class Game {
       rootMargin: "0px",
     };
 
-    var observer = new IntersectionObserver(() => {
+    var observer = new IntersectionObserver((entries) => {
+      const entry = entries[0]
+      for (let entry of entries) {
+        console.log(entry.isIntersecting ? '' : 'Has left the viewport')
+        if (!entry.isIntersecting) {
+          console.log(entry);
+        }
+      }
+      
     }, options);
     this._renderDotsIntervalId = window.setInterval(() => {
       const dot = new Dot(this._el, "button", this.renderHeader.bind(this));
+      observer.observe(dot._el);
     }, newDotIntervalInMs);
   }
   stopRenderingDots() {
