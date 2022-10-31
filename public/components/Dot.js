@@ -1,5 +1,4 @@
 import { getRandomInt } from "../utils/number.js";
-import { isElementInViewport } from "../utils/dom.js";
 import { store } from "../store/index.js";
 import {
   GameStatus,
@@ -39,7 +38,7 @@ class Dot {
       }
       store.increaseScore(this._weight);
       this._callback();
-      this.renderPoint();
+      // this.renderPoint();
       playSound(Sound.Plop);
       this.destroy();
     });
@@ -66,9 +65,9 @@ class Dot {
     this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
     this._intervalId = requestAnimationFrame(this.animate.bind(this));
 
-    if (!isElementInViewport(this._el)) {
-      this.destroy();
-    }
+    // if (!isElementInViewport(this._el)) {
+    //   this.destroy();
+    // }
   }
   getDotWeight(size) {
     // size = 1 => weight = 10
