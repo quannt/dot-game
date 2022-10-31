@@ -95,7 +95,6 @@ class Guide {
     this.destroy();
   }
   destroy() {
-    localStorage.setItem(introLocalStorageKey, 'true');
     this.destroySteps();
     this._el.remove();
     this._callback();

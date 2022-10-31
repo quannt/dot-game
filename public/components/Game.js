@@ -29,10 +29,6 @@ class Game {
     this.renderHeader();
   }
   renderGuide() {
-    if (localStorage.getItem(introLocalStorageKey)) {
-      this.destroySampleDots();
-      return;
-    }
     const steps = [
       {
         hostEl: document.querySelector(".sample-dot"),
@@ -105,6 +101,7 @@ class Game {
   // Event listeners
   handleStartButtonClick() {
     if (store.getStatus() === GameStatus.Idle) {
+      this._bgSound.play();
       store.setStatus(GameStatus.InProgress);
       this.renderDots();
     } else if (store.getStatus() === GameStatus.InProgress) {
@@ -112,6 +109,7 @@ class Game {
       store.setStatus(GameStatus.Paused);
       this.stopRenderingDots();
     } else if (store.getStatus() === GameStatus.Paused) {
+      this._bgSound.play();
       store.setStatus(GameStatus.InProgress);
       this.renderDots();
     }
