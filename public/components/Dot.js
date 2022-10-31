@@ -20,6 +20,7 @@ class Dot {
     const yCoordinate = 0 - size;
     this._xCoordinate = xCoordinate;
     this._yCoordinate = yCoordinate;
+    this.id = Math.random();
 
     this._callback = callback;
     this.render(size);
@@ -30,6 +31,7 @@ class Dot {
     this._el.style.height = `${size}px`;
     this._el.style.width = `${size}px`;
     this._el.style.transform = `translate(${this._xCoordinate}px, ${this._yCoordinate}px)`;
+    this._el.dataset.id = this.id;
     this._parentEl.appendChild(this._el);
 
     this._el.addEventListener("click", (e) => {

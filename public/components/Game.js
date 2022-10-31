@@ -12,6 +12,7 @@ class Game {
     this._startButtonEl = document.querySelector("#start-button");
     this._speedLabelEl = document.querySelector("#speed-label");
     this._speedInput = document.querySelector("#speed-input");
+    this._dots = new Map();
   }
   init() {
     this.hydrateExistingElements();
@@ -88,18 +89,20 @@ class Game {
     };
 
     var observer = new IntersectionObserver((entries) => {
-      const entry = entries[0]
+      const entry = entries[0];
       for (let entry of entries) {
-        console.log(entry.isIntersecting ? '' : 'Has left the viewport')
         if (!entry.isIntersecting) {
-          console.log(entry);
+          const dot = this._dots.get(entry.target.dataset.id);
+          dot?.destroy();
+          this._dots.delete(entry.target.dataset.id);
         }
       }
-      
     }, options);
     this._renderDotsIntervalId = window.setInterval(() => {
       const dot = new Dot(this._el, "button", this.renderHeader.bind(this));
       observer.observe(dot._el);
+      console.log(dot.id);
+      this._dots.set(dot.id.toString(), dot);
     }, newDotIntervalInMs);
   }
   stopRenderingDots() {
