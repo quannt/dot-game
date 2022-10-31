@@ -1,11 +1,13 @@
 import Dot from "./Dot.js";
 import Guide from "./Guide.js";
 import { getRandomInt } from "../utils/number.js";
+import { playSound } from "../utils/sound.js";
 import { store } from "../store/index.js";
 import {
   GameStatus,
   newDotIntervalInMs,
   introLocalStorageKey,
+  Sound,
 } from "../constant/index.js";
 
 class Game {
@@ -102,8 +104,6 @@ class Game {
   // Event listeners
   handleStartButtonClick() {
     if (store.getStatus() === GameStatus.Idle) {
-      const sound = new URL("../assets/click.mp3", import.meta.url);
-      new Audio(sound.href).play();
       store.setStatus(GameStatus.InProgress);
       this.renderDots();
     } else if (store.getStatus() === GameStatus.InProgress) {
@@ -113,6 +113,7 @@ class Game {
       store.setStatus(GameStatus.InProgress);
       this.renderDots();
     }
+    playSound(Sound.Click);
     this.render();
   }
   setUpAutoPause() {

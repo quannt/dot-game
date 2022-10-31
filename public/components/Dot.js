@@ -1,7 +1,8 @@
 import { getRandomInt } from "../utils/number.js";
 import { isElementInViewport } from "../utils/dom.js"
 import { store } from "../store/index.js";
-import { GameStatus, dotMinSizeInPixel, dotMaxSizeInPixel } from "../constant/index.js";
+import { GameStatus, dotMinSizeInPixel, dotMaxSizeInPixel, Sound } from "../constant/index.js";
+import { playSound } from "../utils/sound.js";
 
 class Dot {
   constructor(parentElement, type = "div", callback) {
@@ -33,6 +34,7 @@ class Dot {
       }
       store.increaseScore(this._weight);
       this._callback();
+      playSound(Sound.Plop)
       this.destroy();
     });
     this.animate();
