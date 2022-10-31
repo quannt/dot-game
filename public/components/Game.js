@@ -21,11 +21,11 @@ class Game {
   init() {
     this.hydrateExistingElements();
     this.render();
+    this.renderGuide();
     this.setUpAutoPause();
     this._bgSound = playSound(Sound.Background);
   }
   render() {
-    this.renderGuide();
     this.renderHeader();
   }
   renderGuide() {
@@ -55,7 +55,7 @@ class Game {
         position: "bottom",
       },
     ];
-    const guide = new Guide(
+    this._guide = new Guide(
       document.body,
       "div",
       steps,
@@ -100,18 +100,15 @@ class Game {
 
   // Event listeners
   handleStartButtonClick() {
-    if (store.getStatus() === GameStatus.Idle) {
+    if (store.getStatus() === GameStatus.Idle || store.getStatus() === GameStatus.Paused) {
       this._bgSound.play();
+      this._guide?.destroy();
       store.setStatus(GameStatus.InProgress);
       this.renderDots();
     } else if (store.getStatus() === GameStatus.InProgress) {
       this._bgSound.pause();
       store.setStatus(GameStatus.Paused);
       this.stopRenderingDots();
-    } else if (store.getStatus() === GameStatus.Paused) {
-      this._bgSound.play();
-      store.setStatus(GameStatus.InProgress);
-      this.renderDots();
     }
     playSound(Sound.Click);
     this.render();

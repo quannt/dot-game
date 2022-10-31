@@ -181,6 +181,10 @@ main {
   transform: translate(0px, 0px)
 }
 
+.dot-point {
+  animation: var(--animation-slide-out-up) forwards;
+}
+
 
 /**
  * Guide styling
