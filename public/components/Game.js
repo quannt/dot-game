@@ -3,12 +3,7 @@ import Guide from "./Guide.js";
 import { getRandomInt } from "../utils/number.js";
 import { playSound } from "../utils/sound.js";
 import { store } from "../store/index.js";
-import {
-  GameStatus,
-  newDotIntervalInMs,
-  introLocalStorageKey,
-  Sound,
-} from "../constant/index.js";
+import { GameStatus, newDotIntervalInMs, Sound } from "../constant/index.js";
 
 class Game {
   constructor(element) {
@@ -87,6 +82,13 @@ class Game {
     );
   }
   renderDots() {
+    var options = {
+      root: null,
+      rootMargin: "0px",
+    };
+
+    var observer = new IntersectionObserver(() => {
+    }, options);
     this._renderDotsIntervalId = window.setInterval(() => {
       const dot = new Dot(this._el, "button", this.renderHeader.bind(this));
     }, newDotIntervalInMs);
@@ -100,7 +102,10 @@ class Game {
 
   // Event listeners
   handleStartButtonClick() {
-    if (store.getStatus() === GameStatus.Idle || store.getStatus() === GameStatus.Paused) {
+    if (
+      store.getStatus() === GameStatus.Idle ||
+      store.getStatus() === GameStatus.Paused
+    ) {
       this._bgSound.play();
       this._guide?.destroy();
       store.setStatus(GameStatus.InProgress);
