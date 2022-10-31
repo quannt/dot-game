@@ -22,6 +22,7 @@ class Game {
     this.hydrateExistingElements();
     this.render();
     this.setUpAutoPause();
+    this._bgSound = playSound(Sound.Background);
   }
   render() {
     this.renderGuide();
@@ -107,6 +108,7 @@ class Game {
       store.setStatus(GameStatus.InProgress);
       this.renderDots();
     } else if (store.getStatus() === GameStatus.InProgress) {
+      this._bgSound.pause();
       store.setStatus(GameStatus.Paused);
       this.stopRenderingDots();
     } else if (store.getStatus() === GameStatus.Paused) {
@@ -124,6 +126,7 @@ class Game {
     // a huge cluster of dots are shown once you come back to the tab.
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState !== "visible") {
+        this._bgSound.pause();
         store.setStatus(GameStatus.Paused);
         this.stopRenderingDots();
         this.render();
